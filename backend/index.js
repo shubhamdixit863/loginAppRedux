@@ -15,12 +15,14 @@ app.use(express.json());
 app.post("/login",(req,res)=>{
 
 
+    // user name and password --->
 
+req.body.role="admin";
 var token = jwt.sign(req.body, 'shhhhh');
 
 console.log(token);
 
-res.json({status:"Success",token:token});
+res.json({status:"Success",token:token,role:"admin"});
 
 })
 

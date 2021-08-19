@@ -3,7 +3,10 @@ import {fetchUserByUserName} from "../thunks"
 
 const initialState={
 
-value :0
+value :0,
+success:false,
+erro:false
+
 
 }
 
@@ -24,7 +27,12 @@ const authenticationSlice=createSlice({
 
 
          builder.addCase(fetchUserByUserName.fulfilled, (state, action) => {
+           
       // Add user to the state array
+      state.success=true;
+      state.error=false;
+      localStorage.setItem("token",action.payload.token);
+
    
     }).addCase(fetchUserByUserName.rejected,(state,action)=>{
 

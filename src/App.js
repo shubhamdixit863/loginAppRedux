@@ -9,17 +9,28 @@ import {
   Link
 } from "react-router-dom";
 import Login from './components/Login';
+import Header from './components/Header';
+import Home from './components/Home';
+import ProtectedRoutes from './authorization/ProtectedRoutes';
 
 class App extends Component {
   render() {
     return (
 
       <Router>
+
+        <Header/>
   <Switch>
-          <Route path="/login">
+          <Route exact path="/">
             <Login />
           </Route>
        
+        
+
+         
+
+          <ProtectedRoutes exact path="/home" component={Home}  role={"admin"} />
+
         </Switch>
 
 
